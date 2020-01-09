@@ -1,0 +1,112 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-songs-heading">Create or edit a Songs</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_title">Title</label>
+                    <input type="text" class="form-control" name="title" id="field_title"
+                           formControlName="title"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_genre">Genre</label>
+                    <select class="form-control" name="genre" formControlName="genre" id="field_genre">
+                        <option value="Drama">Drama</option>
+                        <option value="Vibrant">Vibrant</option>
+                        <option value="Romantic">Romantic</option>
+                        <option value="EDM">EDM</option>
+                        <option value="Chinese">Chinese</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_vocal">Vocal</label>
+                    <input type="text" class="form-control" name="vocal" id="field_vocal"
+                           formControlName="vocal"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_country">Country</label>
+                    <select class="form-control" name="country" formControlName="country" id="field_country">
+                        <option value="China">China</option>
+                        <option value="Japan">Japan</option>
+                        <option value="Korea">Korea</option>
+                        <option value="US">US</option>
+                        <option value="Vietnam">Vietnam</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_description">Description</label>
+                    <input type="text" class="form-control" name="description" id="field_description"
+                           formControlName="description"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_songAddress">Song Address</label>
+                    <input type="text" class="form-control" name="songAddress" id="field_songAddress"
+                           formControlName="songAddress"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_lyric">Lyric</label>
+                    <textarea class="form-control" name="lyric" id="field_lyric"
+                              formControlName="lyric"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_avatar">Avatar</label>
+                    <input type="text" class="form-control" name="avatar" id="field_avatar"
+                           formControlName="avatar"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_listenCount">Listen Count</label>
+                    <input type="number" class="form-control" name="listenCount" id="field_listenCount"
+                           formControlName="listenCount"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_favoriteCount">Favorite Count</label>
+                    <input type="number" class="form-control" name="favoriteCount" id="field_favoriteCount"
+                           formControlName="favoriteCount"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_ads">Ads</label>
+                    <select class="form-control" id="field_ads" name="ads" formControlName="adsId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="adsSongOption.id" *ngFor="let adsSongOption of ads; trackBy: trackById">{{adsSongOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_playlist">Playlist</label>
+                    <select class="form-control" id="field_playlist" name="playlist" formControlName="playlistId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="playlistOption.id" *ngFor="let playlistOption of playlists; trackBy: trackById">{{playlistOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_album">Album</label>
+                    <select class="form-control" id="field_album" name="album" formControlName="albumId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="albumOption.id" *ngFor="let albumOption of albums; trackBy: trackById">{{albumOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_favorite">Favorite</label>
+                    <select class="form-control" id="field_favorite" name="favorite" formControlName="favoriteId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="favoriteOption.id" *ngFor="let favoriteOption of favorites; trackBy: trackById">{{favoriteOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

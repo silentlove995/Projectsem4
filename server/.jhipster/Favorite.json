@@ -1,0 +1,31 @@
+{
+    "name": "Favorite",
+    "fields": [
+        {
+            "fieldName": "user",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "song",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "songs",
+            "otherEntityRelationshipName": "favorite",
+            "relationshipName": "song"
+        }
+    ],
+    "changelogDate": "20200109233814",
+    "entityTableName": "favorite",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

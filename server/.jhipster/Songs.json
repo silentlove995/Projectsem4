@@ -1,0 +1,89 @@
+{
+    "name": "Songs",
+    "fields": [
+        {
+            "fieldName": "title",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "genre",
+            "fieldType": "Genre",
+            "fieldValues": "Drama,Vibrant,Romantic,EDM,Chinese"
+        },
+        {
+            "fieldName": "vocal",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "country",
+            "fieldType": "Country",
+            "fieldValues": "China,Japan,Korea,US,Vietnam"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "songAddress",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "lyric",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "avatar",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "listenCount",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "favoriteCount",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "adsSong",
+            "otherEntityRelationshipName": "songs",
+            "relationshipName": "ads",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "playlist",
+            "otherEntityRelationshipName": "song",
+            "relationshipName": "playlist",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "album",
+            "otherEntityRelationshipName": "song",
+            "relationshipName": "album",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "favorite",
+            "otherEntityRelationshipName": "song",
+            "relationshipName": "favorite",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200109233807",
+    "entityTableName": "songs",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

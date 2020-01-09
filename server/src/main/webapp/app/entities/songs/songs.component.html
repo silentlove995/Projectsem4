@@ -1,0 +1,120 @@
+<div>
+    <h2 id="page-heading">
+        <span>Songs</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-songs" [routerLink]="['/songs/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span class="hidden-sm-down" >
+            Create a new Songs
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="Query">
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon [icon]="'search'"></fa-icon>
+                    </button>
+                    <button class="input-group-append btn btn-danger" (click)="search('')" *ngIf="currentSearch">
+                        <fa-icon [icon]="'trash-alt'"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="alert alert-warning" *ngIf="songs?.length === 0">
+        <span>No songs found</span>
+    </div>
+    <div class="table-responsive" *ngIf="songs?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="title"><span>Title</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="genre"><span>Genre</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="vocal"><span>Vocal</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="country"><span>Country</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="description"><span>Description</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="songAddress"><span>Song Address</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="lyric"><span>Lyric</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="avatar"><span>Avatar</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="listenCount"><span>Listen Count</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="favoriteCount"><span>Favorite Count</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="adsId"><span>Ads</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="playlistId"><span>Playlist</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="albumId"><span>Album</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="favoriteId"><span>Favorite</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let songs of songs ;trackBy: trackId">
+                <td><a [routerLink]="['/songs', songs.id, 'view' ]">{{songs.id}}</a></td>
+                <td>{{songs.title}}</td>
+                <td>{{songs.genre}}</td>
+                <td>{{songs.vocal}}</td>
+                <td>{{songs.country}}</td>
+                <td>{{songs.description}}</td>
+                <td>{{songs.songAddress}}</td>
+                <td>{{songs.lyric}}</td>
+                <td>{{songs.avatar}}</td>
+                <td>{{songs.listenCount}}</td>
+                <td>{{songs.favoriteCount}}</td>
+                <td>
+                    <div *ngIf="songs.adsId">
+                        <a [routerLink]="['/ads-song', songs.adsId , 'view' ]" >{{songs.adsId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="songs.playlistId">
+                        <a [routerLink]="['/playlist', songs.playlistId , 'view' ]" >{{songs.playlistId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="songs.albumId">
+                        <a [routerLink]="['/album', songs.albumId , 'view' ]" >{{songs.albumId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="songs.favoriteId">
+                        <a [routerLink]="['/favorite', songs.favoriteId , 'view' ]" >{{songs.favoriteId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/songs', songs.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/songs', songs.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(songs)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="songs?.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

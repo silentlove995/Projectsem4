@@ -1,0 +1,49 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-ads-song-heading">Create or edit a Ads Song</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_adsImage">Ads Image</label>
+                    <input type="text" class="form-control" name="adsImage" id="field_adsImage"
+                           formControlName="adsImage"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_adsContent">Ads Content</label>
+                    <input type="text" class="form-control" name="adsContent" id="field_adsContent"
+                           formControlName="adsContent"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_songId">Song Id</label>
+                    <input type="number" class="form-control" name="songId" id="field_songId"
+                           formControlName="songId"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_songTitle">Song Title</label>
+                    <input type="text" class="form-control" name="songTitle" id="field_songTitle"
+                           formControlName="songTitle"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_songImage">Song Image</label>
+                    <input type="text" class="form-control" name="songImage" id="field_songImage"
+                           formControlName="songImage"/>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+{
+    "name": "AdsPlaylist",
+    "fields": [
+        {
+            "fieldName": "adsImage",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "adsContent",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "playlistId",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "playlistTitle",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "playlistImage",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20200109233813",
+    "entityTableName": "ads_playlist",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

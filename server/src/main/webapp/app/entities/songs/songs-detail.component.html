@@ -1,0 +1,87 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="songs">
+            <h2><span>Songs</span> {{songs.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Title</span></dt>
+                <dd>
+                    <span>{{songs.title}}</span>
+                </dd>
+                <dt><span>Genre</span></dt>
+                <dd>
+                    <span>{{songs.genre}}</span>
+                </dd>
+                <dt><span>Vocal</span></dt>
+                <dd>
+                    <span>{{songs.vocal}}</span>
+                </dd>
+                <dt><span>Country</span></dt>
+                <dd>
+                    <span>{{songs.country}}</span>
+                </dd>
+                <dt><span>Description</span></dt>
+                <dd>
+                    <span>{{songs.description}}</span>
+                </dd>
+                <dt><span>Song Address</span></dt>
+                <dd>
+                    <span>{{songs.songAddress}}</span>
+                </dd>
+                <dt><span>Lyric</span></dt>
+                <dd>
+                    <span>{{songs.lyric}}</span>
+                </dd>
+                <dt><span>Avatar</span></dt>
+                <dd>
+                    <span>{{songs.avatar}}</span>
+                </dd>
+                <dt><span>Listen Count</span></dt>
+                <dd>
+                    <span>{{songs.listenCount}}</span>
+                </dd>
+                <dt><span>Favorite Count</span></dt>
+                <dd>
+                    <span>{{songs.favoriteCount}}</span>
+                </dd>
+                <dt><span>Ads</span></dt>
+                <dd>
+                    <div *ngIf="songs.adsId">
+                        <a [routerLink]="['/ads-song', songs.adsId, 'view']">{{songs.adsId}}</a>
+                    </div>
+                </dd>
+                <dt><span>Playlist</span></dt>
+                <dd>
+                    <div *ngIf="songs.playlistId">
+                        <a [routerLink]="['/playlist', songs.playlistId, 'view']">{{songs.playlistId}}</a>
+                    </div>
+                </dd>
+                <dt><span>Album</span></dt>
+                <dd>
+                    <div *ngIf="songs.albumId">
+                        <a [routerLink]="['/album', songs.albumId, 'view']">{{songs.albumId}}</a>
+                    </div>
+                </dd>
+                <dt><span>Favorite</span></dt>
+                <dd>
+                    <div *ngIf="songs.favoriteId">
+                        <a [routerLink]="['/favorite', songs.favoriteId, 'view']">{{songs.favoriteId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/songs', songs.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

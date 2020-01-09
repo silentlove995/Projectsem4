@@ -1,0 +1,123 @@
+enum VipUser{
+    ACTIVED, INACTIVE
+}
+
+enum Country{
+    China, Japan, Korea, US, Vietnam
+}
+
+enum Genre{
+    Drama, Vibrant, Romantic, EDM, Chinese
+}
+
+entity Payment{
+	userActive String,
+}
+
+entity Songs {
+    title String,
+    genre Genre,
+    vocal String,
+    country Country,
+    description String,
+    songAddress String,
+    lyric TextBlob,
+    avatar String,
+    listenCount Integer,
+    favoriteCount Integer
+}
+
+//entity Producer{
+    //name String,
+    //gender String ,
+    //dob LocalDate,
+    //song String,
+    //avatar String,
+    //about String
+//}
+
+
+
+entity Posts {
+    title String,
+    content String,
+    comment String,
+    image String,
+    like Integer,
+    songAddress String
+}
+
+entity Pages {
+    name String,
+    avatar String,
+    idol String
+}
+
+entity Album {
+    title String,
+    description String,
+    vocal String,
+    thumbnail String
+}
+
+entity Playlist {
+    title String,
+    description String,
+    vocal String,
+    thumbnail String
+}
+
+entity AdsSong {
+    adsImage String,
+    adsContent String,
+    songId Integer,
+    songTitle String,
+    songImage String
+}
+
+entity AdsPlaylist {
+    adsImage String,
+    adsContent String,
+    playlistId Integer,
+    playlistTitle String,
+    playlistImage String
+}
+
+entity Favorite{
+    user String,
+    song String
+}
+
+// defining multiple OneToMany relationships with comments
+relationship OneToMany {
+    Playlist{song} to Songs,
+    Album{song} to Songs,
+    Favorite{song} to Songs,
+    Pages{title} to Posts
+}
+
+// defining multiple OneToOne relationships
+relationship OneToOne{
+    Songs{ads} to AdsSong,
+    Playlist{ads} to AdsPlaylist
+}
+
+
+// Set pagination options
+paginate Songs, Album, Playlist, Favorite, AdsSong, AdsPlaylist, Posts, Pages with pagination
+
+//filter entity
+filter * except Favorite
+//filter Issue
+// Use Data Transfert Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+//service all with serviceImpl
+
+service * with serviceClass
+
+// Set an angular suffix
+//angularSuffix * with mySuffix
+
+

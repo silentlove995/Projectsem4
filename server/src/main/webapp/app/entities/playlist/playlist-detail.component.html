@@ -1,0 +1,45 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="playlist">
+            <h2><span>Playlist</span> {{playlist.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Title</span></dt>
+                <dd>
+                    <span>{{playlist.title}}</span>
+                </dd>
+                <dt><span>Description</span></dt>
+                <dd>
+                    <span>{{playlist.description}}</span>
+                </dd>
+                <dt><span>Vocal</span></dt>
+                <dd>
+                    <span>{{playlist.vocal}}</span>
+                </dd>
+                <dt><span>Thumbnail</span></dt>
+                <dd>
+                    <span>{{playlist.thumbnail}}</span>
+                </dd>
+                <dt><span>Ads</span></dt>
+                <dd>
+                    <div *ngIf="playlist.adsId">
+                        <a [routerLink]="['/ads-playlist', playlist.adsId, 'view']">{{playlist.adsId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/playlist', playlist.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

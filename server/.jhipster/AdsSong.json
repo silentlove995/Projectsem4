@@ -1,0 +1,36 @@
+{
+    "name": "AdsSong",
+    "fields": [
+        {
+            "fieldName": "adsImage",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "adsContent",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "songId",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "songTitle",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "songImage",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20200109233812",
+    "entityTableName": "ads_song",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,53 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="posts">
+            <h2><span>Posts</span> {{posts.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Title</span></dt>
+                <dd>
+                    <span>{{posts.title}}</span>
+                </dd>
+                <dt><span>Content</span></dt>
+                <dd>
+                    <span>{{posts.content}}</span>
+                </dd>
+                <dt><span>Comment</span></dt>
+                <dd>
+                    <span>{{posts.comment}}</span>
+                </dd>
+                <dt><span>Image</span></dt>
+                <dd>
+                    <span>{{posts.image}}</span>
+                </dd>
+                <dt><span>Like</span></dt>
+                <dd>
+                    <span>{{posts.like}}</span>
+                </dd>
+                <dt><span>Song Address</span></dt>
+                <dd>
+                    <span>{{posts.songAddress}}</span>
+                </dd>
+                <dt><span>Pages</span></dt>
+                <dd>
+                    <div *ngIf="posts.pagesId">
+                        <a [routerLink]="['/pages', posts.pagesId, 'view']">{{posts.pagesId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/posts', posts.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

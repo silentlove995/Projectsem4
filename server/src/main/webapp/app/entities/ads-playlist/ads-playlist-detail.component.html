@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="adsPlaylist">
+            <h2><span>Ads Playlist</span> {{adsPlaylist.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Ads Image</span></dt>
+                <dd>
+                    <span>{{adsPlaylist.adsImage}}</span>
+                </dd>
+                <dt><span>Ads Content</span></dt>
+                <dd>
+                    <span>{{adsPlaylist.adsContent}}</span>
+                </dd>
+                <dt><span>Playlist Id</span></dt>
+                <dd>
+                    <span>{{adsPlaylist.playlistId}}</span>
+                </dd>
+                <dt><span>Playlist Title</span></dt>
+                <dd>
+                    <span>{{adsPlaylist.playlistTitle}}</span>
+                </dd>
+                <dt><span>Playlist Image</span></dt>
+                <dd>
+                    <span>{{adsPlaylist.playlistImage}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/ads-playlist', adsPlaylist.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
